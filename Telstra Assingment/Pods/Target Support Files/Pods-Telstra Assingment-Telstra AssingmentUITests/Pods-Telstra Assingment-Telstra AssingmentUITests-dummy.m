@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_Telstra_Assingment_Telstra_AssingmentUITests : NSObject
+@end
+@implementation PodsDummy_Pods_Telstra_Assingment_Telstra_AssingmentUITests
+@end

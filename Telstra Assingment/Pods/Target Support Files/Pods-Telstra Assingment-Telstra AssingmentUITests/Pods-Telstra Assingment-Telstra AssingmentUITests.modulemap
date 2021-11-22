@@ -1,0 +1,6 @@
+framework module Pods_Telstra_Assingment_Telstra_AssingmentUITests {
+  umbrella header "Pods-Telstra Assingment-Telstra AssingmentUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
