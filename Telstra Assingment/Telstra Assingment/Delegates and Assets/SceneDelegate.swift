@@ -21,6 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = PhotosViewController()
         window?.makeKeyAndVisible()
+        
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+        }else{
+            print("Internet Connection not Available!")
+            showAlertInSceneDelegate()
+
+    }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -49,6 +57,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+    
+    func showAlertInSceneDelegate() {
+        let alertController = UIAlertController(title: "Internet Issue", message: "Internet Uavailable", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default) {
+                            UIAlertAction in
+                            NSLog("OK Pressed")
+                        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+                            UIAlertAction in
+                            NSLog("Cancel Pressed")
+                        }
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
 
 

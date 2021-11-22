@@ -28,6 +28,7 @@
 		35B5D546274924A40064EBE9 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5D545274924A40064EBE9 /* PhotoResponse.swift */; };
 		35B5D548274B77930064EBE9 /* UIApplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5D547274B77930064EBE9 /* UIApplication + Extension.swift */; };
 		35B5D54A274B78FA0064EBE9 /* LoderClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5D549274B78FA0064EBE9 /* LoderClass.swift */; };
+		35B5D550274B95A00064EBE9 /* Network Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5D54F274B95A00064EBE9 /* Network Check.swift */; };
 		7D88EE1266BC85EB677E395C /* Pods_Telstra_Assingment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3C3C064995DAC70EADCA7E6 /* Pods_Telstra_Assingment.framework */; };
 		8AE878B2375F0329B243CE73 /* Pods_Telstra_AssingmentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A1923C02DED5A79E78FC47 /* Pods_Telstra_AssingmentTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		35B5D545274924A40064EBE9 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 		35B5D547274B77930064EBE9 /* UIApplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication + Extension.swift"; sourceTree = "<group>"; };
 		35B5D549274B78FA0064EBE9 /* LoderClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoderClass.swift; sourceTree = "<group>"; };
+		35B5D54F274B95A00064EBE9 /* Network Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Check.swift"; sourceTree = "<group>"; };
 		49085998160D648E534054D2 /* Pods-Telstra Assingment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telstra Assingment.debug.xcconfig"; path = "Target Support Files/Pods-Telstra Assingment/Pods-Telstra Assingment.debug.xcconfig"; sourceTree = "<group>"; };
 		642822C6B732A14846C7B463 /* Pods-Telstra AssingmentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telstra AssingmentTests.release.xcconfig"; path = "Target Support Files/Pods-Telstra AssingmentTests/Pods-Telstra AssingmentTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B7474C05116D97DCF3E051D /* Pods-Telstra Assingment-Telstra AssingmentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telstra Assingment-Telstra AssingmentUITests.release.xcconfig"; path = "Target Support Files/Pods-Telstra Assingment-Telstra AssingmentUITests/Pods-Telstra Assingment-Telstra AssingmentUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				35B5D53D27479A0F0064EBE9 /* CommonExtension.swift */,
 				35B5D547274B77930064EBE9 /* UIApplication + Extension.swift */,
 				35B5D549274B78FA0064EBE9 /* LoderClass.swift */,
+				35B5D54F274B95A00064EBE9 /* Network Check.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				35B5D54A274B78FA0064EBE9 /* LoderClass.swift in Sources */,
 				35B5D53527450AEB0064EBE9 /* PhotosViewModal.swift in Sources */,
 				35B5D546274924A40064EBE9 /* PhotoResponse.swift in Sources */,
+				35B5D550274B95A00064EBE9 /* Network Check.swift in Sources */,
 				35B5D5292745061A0064EBE9 /* HttpUtility.swift in Sources */,
 				35B5D52F2745081D0064EBE9 /* PhotoRequestModal.swift in Sources */,
 				35B5D525274505600064EBE9 /* Common.swift in Sources */,
