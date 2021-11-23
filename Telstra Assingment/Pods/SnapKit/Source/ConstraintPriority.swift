@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 public struct ConstraintPriority : ExpressibleByFloatLiteral, Equatable, Strideable {
     public typealias FloatLiteralType = Float
     
@@ -67,11 +67,12 @@ public struct ConstraintPriority : ExpressibleByFloatLiteral, Equatable, Stridea
 
     // MARK: Strideable
 
-    public func advanced(by n: FloatLiteralType) -> ConstraintPriority {
-        return ConstraintPriority(floatLiteral: value + n)
+    public func advanced(by number: FloatLiteralType) -> ConstraintPriority {
+        return ConstraintPriority(floatLiteral: value + number)
     }
 
     public func distance(to other: ConstraintPriority) -> FloatLiteralType {
         return other.value - value
     }
 }
+// swiftlint:enable all

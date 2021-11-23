@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
 
 import Foundation
-
+// swiftlint:disable all
 #if os(iOS) || os(tvOS)
     import UIKit
 #if swift(>=4.2)
@@ -39,4 +39,4 @@ import Foundation
     typealias LayoutAttribute = NSLayoutConstraint.Attribute
     typealias LayoutPriority = NSLayoutConstraint.Priority
 #endif
-
+// swiftlint:enable all

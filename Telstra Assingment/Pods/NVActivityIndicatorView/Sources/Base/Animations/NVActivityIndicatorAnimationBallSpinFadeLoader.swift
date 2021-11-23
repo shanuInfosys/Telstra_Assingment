@@ -27,14 +27,14 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallSpinFadeLoader: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationBallSpinFadeLoader: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSpacing: CGFloat = -2
         let circleSize = (size.width - 4 * circleSpacing) / 5
-        let x = (layer.bounds.size.width - size.width) / 2
-        let y = (layer.bounds.size.height - size.height) / 2
+        let xaxis = (layer.bounds.size.width - size.width) / 2
+        let yaxis = (layer.bounds.size.height - size.height) / 2
         let duration: CFTimeInterval = 1
         let beginTime = CACurrentMediaTime()
         let beginTimes: [CFTimeInterval] = [0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84]
@@ -63,14 +63,14 @@ class NVActivityIndicatorAnimationBallSpinFadeLoader: NVActivityIndicatorAnimati
         animation.isRemovedOnCompletion = false
 
         // Draw circles
-        for i in 0 ..< 8 {
-            let circle = circleAt(angle: CGFloat(Double.pi / 4) * CGFloat(i),
+        for index in 0 ..< 8 {
+            let circle = circleAt(angle: CGFloat(Double.pi / 4) * CGFloat(index),
                                   size: circleSize,
-                                  origin: CGPoint(x: x, y: y),
+                                  origin: CGPoint(x: xaxis, y: yaxis),
                                   containerSize: size,
                                   color: color)
 
-            animation.beginTime = beginTime + beginTimes[i]
+            animation.beginTime = beginTime + beginTimes[index]
             circle.add(animation, forKey: "animation")
             layer.addSublayer(circle)
         }
@@ -91,3 +91,4 @@ class NVActivityIndicatorAnimationBallSpinFadeLoader: NVActivityIndicatorAnimati
     }
 }
 #endif
+// swiftlint:enable all

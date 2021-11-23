@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationSemiCircleSpin: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationSemiCircleSpin: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let duration: CFTimeInterval = 0.6
@@ -57,3 +57,4 @@ class NVActivityIndicatorAnimationSemiCircleSpin: NVActivityIndicatorAnimationDe
     }
 }
 #endif
+// swiftlint:enable all

@@ -24,11 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
+// swiftlint:disable line_length
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallClipRotateMultiple: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable type_name
+class NVActivityIndicatorAnimationBallClipRotateMultiple: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let bigCircleSize: CGFloat = size.width
@@ -49,7 +49,6 @@ class NVActivityIndicatorAnimationBallClipRotateMultiple: NVActivityIndicatorAni
                  size: smallCircleSize,
                  color: color, reverse: true)
     }
-
     func createAnimationIn(duration: CFTimeInterval, timingFunction: CAMediaTimingFunction, reverse: Bool) -> CAAnimation {
         // Scale animation
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
@@ -97,3 +96,4 @@ class NVActivityIndicatorAnimationBallClipRotateMultiple: NVActivityIndicatorAni
     }
 }
 #endif
+// swiftlint:enable line_length

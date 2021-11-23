@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 public class ConstraintMakerPriortizable: ConstraintMakerFinalizable {
     
@@ -66,3 +66,4 @@ public class ConstraintMakerPriortizable: ConstraintMakerFinalizable {
         return self.priority(.low)
     }
 }
+// swiftlint:disable all

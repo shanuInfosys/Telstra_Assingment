@@ -28,7 +28,7 @@
 #if canImport(UIKit)
 import UIKit
 
-class NVActivityIndicatorAnimationBallScale: NVActivityIndicatorAnimationDelegate {
+class NVActivityIndicatorAnimationBallScale: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let duration: CFTimeInterval = 1

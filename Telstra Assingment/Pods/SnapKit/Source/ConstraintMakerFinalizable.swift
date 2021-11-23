@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 public class ConstraintMakerFinalizable {
     
@@ -47,3 +47,4 @@ public class ConstraintMakerFinalizable {
     }
     
 }
+// swiftlint:enable all

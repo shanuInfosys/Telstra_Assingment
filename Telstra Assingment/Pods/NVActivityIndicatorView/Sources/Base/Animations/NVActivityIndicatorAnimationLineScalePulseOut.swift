@@ -27,13 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let lineSize = size.width / 9
-        let x = (layer.bounds.size.width - size.width) / 2
-        let y = (layer.bounds.size.height - size.height) / 2
+        let xaxis = (layer.bounds.size.width - size.width) / 2
+        let yaxis = (layer.bounds.size.height - size.height) / 2
         let duration: CFTimeInterval = 1
         let beginTime = CACurrentMediaTime()
         let beginTimes = [0.4, 0.2, 0, 0.2, 0.4]
@@ -50,14 +50,14 @@ class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndicatorAnimatio
         animation.isRemovedOnCompletion = false
 
         // Draw lines
-        for i in 0 ..< 5 {
+        for index in 0 ..< 5 {
             let line = NVActivityIndicatorShape.line.layerWith(size: CGSize(width: lineSize, height: size.height), color: color)
-            let frame = CGRect(x: x + lineSize * 2 * CGFloat(i),
-                               y: y,
+            let frame = CGRect(x: xaxis + lineSize * 2 * CGFloat(index),
+                               y: yaxis,
                                width: lineSize,
                                height: size.height)
 
-            animation.beginTime = beginTime + beginTimes[i]
+            animation.beginTime = beginTime + beginTimes[index]
             line.frame = frame
             line.add(animation, forKey: "animation")
             layer.addSublayer(line)
@@ -65,3 +65,4 @@ class NVActivityIndicatorAnimationLineScalePulseOut: NVActivityIndicatorAnimatio
     }
 }
 #endif
+// swiftlint:enable all

@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallScaleRipple: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationBallScaleRipple: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let duration: CFTimeInterval = 1
@@ -71,3 +71,4 @@ class NVActivityIndicatorAnimationBallScaleRipple: NVActivityIndicatorAnimationD
     }
 }
 #endif
+// swiftlint:enable all

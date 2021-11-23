@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 public struct ConstraintViewDSL: ConstraintAttributesDSL {
     
@@ -99,3 +99,4 @@ public struct ConstraintViewDSL: ConstraintAttributesDSL {
     }
     
 }
+// swiftlint:disable all

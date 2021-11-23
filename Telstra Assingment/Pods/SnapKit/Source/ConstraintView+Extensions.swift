@@ -20,7 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+// swiftlint:disable all
 #if os(iOS) || os(tvOS)
     import UIKit
 #else
@@ -31,94 +31,94 @@
 public extension ConstraintView {
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_left: ConstraintItem { return self.snp.left }
+    var snpleft: ConstraintItem { return self.snp.left }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_top: ConstraintItem { return self.snp.top }
+    var snptop: ConstraintItem { return self.snp.top }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_right: ConstraintItem { return self.snp.right }
+    var snpright: ConstraintItem { return self.snp.right }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_bottom: ConstraintItem { return self.snp.bottom }
+    var snpbottom: ConstraintItem { return self.snp.bottom }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_leading: ConstraintItem { return self.snp.leading }
+    var snpleading: ConstraintItem { return self.snp.leading }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_trailing: ConstraintItem { return self.snp.trailing }
+    var snptrailing: ConstraintItem { return self.snp.trailing }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_width: ConstraintItem { return self.snp.width }
+    var snpwidth: ConstraintItem { return self.snp.width }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_height: ConstraintItem { return self.snp.height }
+    var snpheight: ConstraintItem { return self.snp.height }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_centerX: ConstraintItem { return self.snp.centerX }
+    var snpcenterX: ConstraintItem { return self.snp.centerX }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_centerY: ConstraintItem { return self.snp.centerY }
+    var snpcenterY: ConstraintItem { return self.snp.centerY }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_baseline: ConstraintItem { return self.snp.baseline }
+    var snpbaseline: ConstraintItem { return self.snp.baseline }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, OSX 10.11, *)
-    var snp_lastBaseline: ConstraintItem { return self.snp.lastBaseline }
+    var snplastBaseline: ConstraintItem { return self.snp.lastBaseline }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, OSX 10.11, *)
-    var snp_firstBaseline: ConstraintItem { return self.snp.firstBaseline }
+    var snpfirstBaseline: ConstraintItem { return self.snp.firstBaseline }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_leftMargin: ConstraintItem { return self.snp.leftMargin }
+    var snpleftMargin: ConstraintItem { return self.snp.leftMargin }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_topMargin: ConstraintItem { return self.snp.topMargin }
+    var snptopMargin: ConstraintItem { return self.snp.topMargin }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_rightMargin: ConstraintItem { return self.snp.rightMargin }
+    var snprightMargin: ConstraintItem { return self.snp.rightMargin }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_bottomMargin: ConstraintItem { return self.snp.bottomMargin }
+    var snpbottomMargin: ConstraintItem { return self.snp.bottomMargin }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_leadingMargin: ConstraintItem { return self.snp.leadingMargin }
+    var snpleadingMargin: ConstraintItem { return self.snp.leadingMargin }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_trailingMargin: ConstraintItem { return self.snp.trailingMargin }
+    var snptrailingMargin: ConstraintItem { return self.snp.trailingMargin }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_centerXWithinMargins: ConstraintItem { return self.snp.centerXWithinMargins }
+    var snpcenterXWithinMargins: ConstraintItem { return self.snp.centerXWithinMargins }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_centerYWithinMargins: ConstraintItem { return self.snp.centerYWithinMargins }
+    var snpcenterYWithinMargins: ConstraintItem { return self.snp.centerYWithinMargins }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_edges: ConstraintItem { return self.snp.edges }
+    var snpedges: ConstraintItem { return self.snp.edges }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_size: ConstraintItem { return self.snp.size }
+    var snpsize: ConstraintItem { return self.snp.size }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
-    var snp_center: ConstraintItem { return self.snp.center }
+    var snpcenter: ConstraintItem { return self.snp.center }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_margins: ConstraintItem { return self.snp.margins }
+    var snpmargins: ConstraintItem { return self.snp.margins }
     
     @available(iOS, deprecated, message:"Use newer snp.* syntax.")
     @available(iOS 8.0, *)
-    var snp_centerWithinMargins: ConstraintItem { return self.snp.centerWithinMargins }
+    var snpcenterWithinMargins: ConstraintItem { return self.snp.centerWithinMargins }
     
     @available(*, deprecated, message:"Use newer snp.* syntax.")
     func snp_prepareConstraints(_ closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
@@ -150,3 +150,4 @@ public extension ConstraintView {
     }
     
 }
+// swiftlint:disable all

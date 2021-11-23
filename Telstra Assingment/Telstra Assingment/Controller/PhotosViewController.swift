@@ -4,115 +4,97 @@
 //
 //  Created by SHANU on 20/11/21.
 //
-
-import UIKit
 import SnapKit
-import NVActivityIndicatorView
+import UIKit
 class PhotosViewController: UIViewController {
+// MARK: - Outlet Declaration
+    private var photosViewModel = PhotosViewModal()
+    private var photosTableData = PhotoResponse()
+    private let refreshControl = UIRefreshControl()
     
-    var photosViewModel : PhotosViewModal = PhotosViewModal()
-    var photosTableData = PhotoResponse()
-    var items: [String] = []
-    var photoResponseObj : PhotoResponse = PhotoResponse()
-    let navbar = UIView()
-    let titleLabel = UILabel()
-
+// MARK: - Variable Declaration
+    private var isRefreshSelected = false
     lazy var photosTableView: UITableView = {
-        let v = UITableView()
-        v.estimatedRowHeight = 150
-        v.rowHeight = UITableView.automaticDimension
-        v.separatorStyle = .singleLine
-        v.separatorColor = .black
-        v.allowsSelection = false
-        v.backgroundColor = .clear
-        return v
+        let tempphotosTableView = UITableView()
+        tempphotosTableView.estimatedRowHeight = 200
+        tempphotosTableView.rowHeight = UITableView.automaticDimension
+        tempphotosTableView.separatorStyle = .none
+        tempphotosTableView.separatorColor = .black
+        tempphotosTableView.allowsSelection = false
+        tempphotosTableView.backgroundColor = .white
+        return tempphotosTableView
     }()
-    
-    
-    let navigationView: UIView = {
-        let v = UIView()
-        v.backgroundColor = .clear
-        return v
-    }()
-    
-    let label: UILabel = {
-        let v = UILabel()
-        v.backgroundColor = .clear
-        v.textColor = .white
-        v.textAlignment = .center
-        v.layer.cornerRadius = 5
-        v.layer.masksToBounds = true
-        v.numberOfLines = 0
-        return v
-    }()
-    
-    
-    
-    
+
+// MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        photosTableView.addSubview(refreshControl)
         photosViewModel.delegate = self
         photosViewModel.getPhotosData()
-        setUpNavBar()
+        setupUI()
         LoaderClass.sharedInstance.setUpLoader(vc: self)
     }
-    
-    func setUpNavBar() {
-        
-        let superview = self.view
-        superview!.addSubview(navbar)
-        navbar.backgroundColor = .white
-        navbar.snp.makeConstraints { make in
-            make.height.equalTo(80)
-            make.width.equalToSuperview()
-            make.top.equalTo(superview?.snp.top as! ConstraintRelatableTarget)
-            
-        }
-        navbar.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) -> Void in
-            make.center.equalTo(navbar).offset(8)
-        }
-        setupUI()
+// MARK: - Method for pull to refresh
+    @objc private func refresh(_ sender: AnyObject) {
+        isRefreshSelected = true
+       // self.photosTableData.rows?.removeAll()
+        photosViewModel.getPhotosData()
     }
     
-    
-    func setTitleToNavBar (title : String) {
-        titleLabel.text = title
-        titleLabel.textColor = .black
-        titleLabel.sizeToFit()
+// MARK: - Method to set title for navigation bar
+   private func setTitleToNavBar (title: String) {
+    self.navigationItem.title = title
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("NotificationIdentifier"), object: nil)
-    }
-    
-    func setupUI() {
-        
-        photosTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.cellId)
+
+// MARK: - Method for registering UITableView Cell
+   private func setupUI() {
+    photosTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: cellId)
         self.view.addSubview(photosTableView)
-        photosTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(navbar.snp.bottom).offset(1)
+        photosTableView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(4)
         }
     }
 }
-
-extension PhotosViewController : photosViewModelDelegate {
+// MARK: - Class Extension
+extension PhotosViewController: photosViewModelDelegate {
+// MARK: - Delegate to pass data from viewmodal to Controller
     func didReceivePhotosResponse(photoResponse: PhotoResponse) {
-        
-        var tempModal = photoResponse
-        let getUpdatedModal = removeNullDataFromModal(modal: &tempModal)
-        self.photosTableData = getUpdatedModal
+        self.photosTableData.rows?.removeAll()
+        self.photosTableData = photoResponse
         setTitleToNavBar(title: self.photosTableData.title ?? " ")
         self.photosTableView.dataSource = self
-        self.photosTableView.delegate = self
         self.photosTableView.reloadData()
         LoaderClass.sharedInstance.stopLoader()
         
-       // stopLoader()
+        if isRefreshSelected == true {
+            refreshControl.endRefreshing()
+            isRefreshSelected = false
+        }
+        else {
+        }
     }
 }
+// MARK: - TableView Data Source
+extension PhotosViewController: UITableViewDataSource {
+    // MARK: - Table view datasource method
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         {
+            photosTableData.rows?.count ?? 0
+        }()
+    }
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PhotosTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.photosCellData = photosTableData.rows?[indexPath.row]
+        return cell
+    }
+}

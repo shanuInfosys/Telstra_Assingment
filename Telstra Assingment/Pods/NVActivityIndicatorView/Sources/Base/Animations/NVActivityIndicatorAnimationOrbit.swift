@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationOrbit: NVActivityIndiAniDelegate {
     let duration: CFTimeInterval = 1.9
     let satelliteCoreRatio: CGFloat = 0.25
     let distanceRatio: CGFloat = 1.5 // distance / core size
@@ -172,3 +172,4 @@ class NVActivityIndicatorAnimationOrbit: NVActivityIndicatorAnimationDelegate {
     }
 }
 #endif
+// swiftlint:enable all

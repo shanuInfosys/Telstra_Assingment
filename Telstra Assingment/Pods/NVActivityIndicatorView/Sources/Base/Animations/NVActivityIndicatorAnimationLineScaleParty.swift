@@ -27,13 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationLineScaleParty: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationLineScaleParty: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let lineSize = size.width / 7
-        let x = (layer.bounds.size.width - size.width) / 2
-        let y = (layer.bounds.size.height - size.height) / 2
+        let xaxis = (layer.bounds.size.width - size.width) / 2
+        let yaxis = (layer.bounds.size.height - size.height) / 2
         let durations: [CFTimeInterval] = [1.26, 0.43, 1.01, 0.73]
         let beginTime = CACurrentMediaTime()
         let beginTimes: [CFTimeInterval] = [0.77, 0.29, 0.28, 0.74]
@@ -48,12 +48,12 @@ class NVActivityIndicatorAnimationLineScaleParty: NVActivityIndicatorAnimationDe
         animation.repeatCount = HUGE
         animation.isRemovedOnCompletion = false
 
-        for i in 0 ..< 4 {
+        for index in 0 ..< 4 {
             let line = NVActivityIndicatorShape.line.layerWith(size: CGSize(width: lineSize, height: size.height), color: color)
-            let frame = CGRect(x: x + lineSize * 2 * CGFloat(i), y: y, width: lineSize, height: size.height)
+            let frame = CGRect(x: xaxis + lineSize * 2 * CGFloat(index), y: yaxis, width: lineSize, height: size.height)
 
-            animation.beginTime = beginTime + beginTimes[i]
-            animation.duration = durations[i]
+            animation.beginTime = beginTime + beginTimes[index]
+            animation.duration = durations[index]
             line.frame = frame
             line.add(animation, forKey: "animation")
             layer.addSublayer(line)
@@ -61,3 +61,4 @@ class NVActivityIndicatorAnimationLineScaleParty: NVActivityIndicatorAnimationDe
     }
 }
 #endif
+// swiftlint:enable all

@@ -26,10 +26,11 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 #if os(iOS) || os(tvOS)
     public typealias ConstraintInsets = UIEdgeInsets
 #else
     public typealias ConstraintInsets = NSEdgeInsets
 #endif
+// swiftlint:disable all

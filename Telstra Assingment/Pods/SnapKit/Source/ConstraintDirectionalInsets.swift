@@ -20,7 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+// swiftlint:disable all
 #if os(iOS) || os(tvOS)
     import UIKit
 #else
@@ -32,3 +32,4 @@
     @available(iOS 11.0, tvOS 11.0, *)
     public typealias ConstraintDirectionalInsets = NSDirectionalEdgeInsets
 #endif
+// swiftlint:enable all

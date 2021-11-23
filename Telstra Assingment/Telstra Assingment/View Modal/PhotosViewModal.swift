@@ -6,23 +6,23 @@
 //
 
 import Foundation
-protocol photosViewModelDelegate {
-    func didReceivePhotosResponse(photoResponse : PhotoResponse)
+// MARK: - Protocol Creation for passing data to View Controller
+protocol photosViewModelDelegate: AnyObject {
+    func didReceivePhotosResponse(photoResponse: PhotoResponse)
 }
-
+// MARK: - Method for getting data to pass to reqyured views
 struct PhotosViewModal {
-    var delegate : photosViewModelDelegate?
+    weak var delegate: photosViewModelDelegate?
+    
     func getPhotosData() {
         let photoResource = PhotoResource()
-        photoResource.getPhotosWithDesc() { photoResponseApi in
-            if photoResponseApi?.rows?.count != 0 {
+        photoResource.getPhotosWithDesc { photoResponseApi in
+            guard let pResponse = photoResponseApi else {
+                return
+            }
                 DispatchQueue.main.async {
-                self.delegate?.didReceivePhotosResponse(photoResponse: photoResponseApi!)
+                self.delegate?.didReceivePhotosResponse(photoResponse: pResponse)
                 }
-            }
-            else {
-
-            }
         }
     }
 }

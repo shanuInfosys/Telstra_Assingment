@@ -28,7 +28,7 @@
 #if canImport(UIKit)
 import UIKit
 
-class NVActivityIndicatorAnimationBlank: NVActivityIndicatorAnimationDelegate {
+class NVActivityIndicatorAnimationBlank: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in _: CALayer, size _: CGSize, color _: UIColor) {
         // Do nothing

@@ -24,11 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-
+// swiftlint:disable line_length
 #if canImport(UIKit)
 import UIKit
 
-class NVActivityIndicatorAnimationBallRotate: NVActivityIndicatorAnimationDelegate {
+class NVActivityIndicatorAnimationBallRotate: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSize: CGFloat = size.width / 5
@@ -58,12 +58,10 @@ class NVActivityIndicatorAnimationBallRotate: NVActivityIndicatorAnimationDelega
         animation.duration = duration
         animation.repeatCount = HUGE
         animation.isRemovedOnCompletion = false
-
         // Draw circles
         let leftCircle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
         let rightCircle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
         let centerCircle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
-
         leftCircle.opacity = 0.8
         leftCircle.frame = CGRect(x: 0, y: (size.height - circleSize) / 2, width: circleSize, height: circleSize)
         rightCircle.opacity = 0.8
@@ -82,3 +80,4 @@ class NVActivityIndicatorAnimationBallRotate: NVActivityIndicatorAnimationDelega
     }
 }
 #endif
+// swiftlint:enable line_length

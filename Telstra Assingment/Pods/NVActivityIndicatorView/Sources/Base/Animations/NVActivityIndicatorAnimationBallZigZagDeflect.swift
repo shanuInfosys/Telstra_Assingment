@@ -27,19 +27,17 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallZigZagDeflect: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationBallZigZagDeflect: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
+        
+        let animation = CAKeyframeAnimation(keyPath: "transform")
         let circleSize: CGFloat = size.width / 5
         let duration: CFTimeInterval = 0.75
         let deltaX = size.width / 2 - circleSize / 2
         let deltaY = size.height / 2 - circleSize / 2
         let frame = CGRect(x: (layer.bounds.size.width - circleSize) / 2, y: (layer.bounds.size.height - circleSize) / 2, width: circleSize, height: circleSize)
-
-        // Circle 1 animation
-        let animation = CAKeyframeAnimation(keyPath: "transform")
-
         animation.keyTimes = [0, 0.33, 0.66, 1]
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         animation.values = [
@@ -77,3 +75,4 @@ class NVActivityIndicatorAnimationBallZigZagDeflect: NVActivityIndicatorAnimatio
     }
 }
 #endif
+// swiftlint:enable all

@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 public class ConstraintDescription {
     
@@ -67,3 +67,4 @@ public class ConstraintDescription {
     }
     
 }
+// swiftlint:disable all

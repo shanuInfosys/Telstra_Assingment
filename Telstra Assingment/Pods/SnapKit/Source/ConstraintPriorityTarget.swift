@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 public protocol ConstraintPriorityTarget {
     
@@ -83,3 +83,4 @@ extension UILayoutPriority: ConstraintPriorityTarget {
 
 }
 #endif
+// swiftlint:enable all

@@ -27,14 +27,14 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallPulseSync: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationBallPulseSync: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSpacing: CGFloat = 2
         let circleSize = (size.width - circleSpacing * 2) / 3
-        let x = (layer.bounds.size.width - size.width) / 2
-        let y = (layer.bounds.size.height - circleSize) / 2
+        let xaxis = (layer.bounds.size.width - size.width) / 2
+        let yaxis = (layer.bounds.size.height - circleSize) / 2
         let deltaY = (size.height / 2 - circleSize / 2) / 2
         let duration: CFTimeInterval = 0.6
         let beginTime = CACurrentMediaTime()
@@ -52,14 +52,14 @@ class NVActivityIndicatorAnimationBallPulseSync: NVActivityIndicatorAnimationDel
         animation.isRemovedOnCompletion = false
 
         // Draw circles
-        for i in 0 ..< 3 {
+        for index in 0 ..< 3 {
             let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
-            let frame = CGRect(x: x + circleSize * CGFloat(i) + circleSpacing * CGFloat(i),
-                               y: y,
+            let frame = CGRect(x: xaxis + circleSize * CGFloat(index) + circleSpacing * CGFloat(index),
+                               y: yaxis,
                                width: circleSize,
                                height: circleSize)
 
-            animation.beginTime = beginTime + beginTimes[i]
+            animation.beginTime = beginTime + beginTimes[index]
             circle.frame = frame
             circle.add(animation, forKey: "animation")
             layer.addSublayer(circle)
@@ -67,3 +67,4 @@ class NVActivityIndicatorAnimationBallPulseSync: NVActivityIndicatorAnimationDel
     }
 }
 #endif
+// swiftlint:enable all

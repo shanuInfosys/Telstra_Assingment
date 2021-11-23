@@ -20,7 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+// swiftlint:disable all
 #if os(iOS) || os(tvOS)
     import UIKit
 #else
@@ -45,30 +45,25 @@ extension ConstraintInsets: ConstraintConstantTarget {
 extension ConstraintDirectionalInsets: ConstraintConstantTarget {
 }
 #endif
-
+// swiftlint:disable cyclomatic_complexity
 extension ConstraintConstantTarget {
-    
+    // swiftlint:disable function_body_length
     internal func constraintConstantTargetValueFor(layoutAttribute: LayoutAttribute) -> CGFloat {
         if let value = self as? CGFloat {
             return value
         }
-        
         if let value = self as? Float {
             return CGFloat(value)
         }
-        
         if let value = self as? Double {
             return CGFloat(value)
         }
-        
         if let value = self as? Int {
             return CGFloat(value)
         }
-        
         if let value = self as? UInt {
             return CGFloat(value)
         }
-        
         if let value = self as? CGSize {
             if layoutAttribute == .width {
                 return value.width
@@ -78,7 +73,6 @@ extension ConstraintConstantTarget {
                 return 0.0
             }
         }
-        
         if let value = self as? CGPoint {
             #if os(iOS) || os(tvOS)
                 switch layoutAttribute {
@@ -108,7 +102,6 @@ extension ConstraintConstantTarget {
             }
             #endif
         }
-        
         if let value = self as? ConstraintInsets {
             #if os(iOS) || os(tvOS)
                 switch layoutAttribute {
@@ -170,7 +163,6 @@ extension ConstraintConstantTarget {
             }
             #endif
         }
-        
         #if os(iOS) || os(tvOS)
             if #available(iOS 11.0, tvOS 11.0, *), let value = self as? ConstraintDirectionalInsets {
                 switch layoutAttribute {
@@ -209,5 +201,7 @@ extension ConstraintConstantTarget {
 
         return 0.0
     }
-    
+    // swiftlint:enable function_body_length
 }
+// swiftlint:enable cyclomatic_complexity
+// swiftlint:disable all

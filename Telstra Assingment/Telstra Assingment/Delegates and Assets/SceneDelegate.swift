@@ -10,70 +10,31 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = PhotosViewController()
-        window?.makeKeyAndVisible()
         
-        if Reachability.isConnectedToNetwork(){
-            print("Internet Connection Available!")
-        }else{
-            print("Internet Connection not Available!")
+// MARK: - Making PhotoViewController as Root with Navigation
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+           window = UIWindow(windowScene: windowScene)
+           window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: PhotosViewController())
+        
+// MARK: - Checking internet connectivity
+        if Reachability.isConnectedToNetwork() {
+        }
+        else {
             showAlertInSceneDelegate()
-
     }
-    }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
     }
     
+// MARK: - Show alert if network connectivity fails
+    
     func showAlertInSceneDelegate() {
-        let alertController = UIAlertController(title: "Internet Issue", message: "Internet Uavailable", preferredStyle: .actionSheet)
-        let okAction = UIAlertAction(title: "Try Again", style: UIAlertAction.Style.default) {
-                            UIAlertAction in
-                            NSLog("OK Pressed")
-                        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
-                            UIAlertAction in
-                            NSLog("Cancel Pressed")
-                        }
+        let alertController = UIAlertController(title: title, message: titledescription, preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: okTitle, style: UIAlertAction.Style.default) { _ in }
+        let cancelAction = UIAlertAction(title: cancelTitle, style: UIAlertAction.Style.cancel) { _ in }
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
-
-
 }
-

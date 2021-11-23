@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallClipRotate: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityAnimationBallClipRotate: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let duration: CFTimeInterval = 0.75
@@ -67,3 +67,4 @@ class NVActivityIndicatorAnimationBallClipRotate: NVActivityIndicatorAnimationDe
     }
 }
 #endif
+// swiftlint:enable all

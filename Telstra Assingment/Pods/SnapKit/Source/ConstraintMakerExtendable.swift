@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 public class ConstraintMakerExtendable: ConstraintMakerRelatable {
     
@@ -177,3 +177,4 @@ public class ConstraintMakerExtendable: ConstraintMakerRelatable {
     }
     
 }
+// swiftlint:enable all

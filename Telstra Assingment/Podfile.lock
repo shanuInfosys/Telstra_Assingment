@@ -6,23 +6,27 @@ PODS:
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
   - SnapKit (5.0.1)
+  - SwiftLint (0.45.0)
 
 DEPENDENCIES:
   - NVActivityIndicatorView
   - SDWebImage (~> 5.0)
-  - SnapKit (~> 5.0.0)
+  - SnapKit (~> 5.0.1)
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - NVActivityIndicatorView
     - SDWebImage
     - SnapKit
+    - SwiftLint
 
 SPEC CHECKSUMS:
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: a324cdd0480be096480a314a3cf1a07fa22b3f87
+PODFILE CHECKSUM: 8476726388b8592728dbdf7fa8026962d4cd1d67
 
 COCOAPODS: 1.11.2

@@ -26,7 +26,7 @@
 #else
     import AppKit
 #endif
-
+// swiftlint:disable all
 
 #if os(iOS) || os(tvOS)
     @available(iOS 8.0, *)
@@ -34,3 +34,4 @@
 #else
     public class ConstraintLayoutSupport {}
 #endif
+// swiftlint:enable all

@@ -20,7 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+// swiftlint:disable all
 #if os(iOS) || os(tvOS)
     import UIKit
 #else
@@ -69,7 +69,7 @@ public final class Constraint {
     }
     
     // MARK: Initialization
-
+    // swiftlint:disable cyclomatic_complexity
     internal init(from: ConstraintItem,
                   to: ConstraintItem,
                   relation: ConstraintRelation,
@@ -212,6 +212,8 @@ public final class Constraint {
             self.layoutConstraints.append(layoutConstraint)
         }
     }
+    
+    // swiftlint:enable cyclomatic_complexity
 
     // MARK: Public
 
@@ -303,7 +305,6 @@ public final class Constraint {
 
     internal func activateIfNeeded(updatingExisting: Bool = false) {
         guard let item = self.from.layoutConstraintItem else {
-            print("WARNING: SnapKit failed to get from item from constraint. Activate will be a no-op.")
             return
         }
         let layoutConstraints = self.layoutConstraints
@@ -331,7 +332,6 @@ public final class Constraint {
 
     internal func deactivateIfNeeded() {
         guard let item = self.from.layoutConstraintItem else {
-            print("WARNING: SnapKit failed to get from item from constraint. Deactivate will be a no-op.")
             return
         }
         let layoutConstraints = self.layoutConstraints
@@ -339,3 +339,4 @@ public final class Constraint {
         item.remove(constraints: [self])
     }
 }
+// swiftlint:enable all

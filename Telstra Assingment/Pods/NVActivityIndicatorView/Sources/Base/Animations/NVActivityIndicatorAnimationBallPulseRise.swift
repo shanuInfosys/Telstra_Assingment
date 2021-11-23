@@ -27,14 +27,14 @@
 
 #if canImport(UIKit)
 import UIKit
-
-class NVActivityIndicatorAnimationBallPulseRise: NVActivityIndicatorAnimationDelegate {
+// swiftlint:disable all
+class NVActivityIndicatorAnimationBallPulseRise: NVActivityIndiAniDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSpacing: CGFloat = 2
         let circleSize = (size.width - 4 * circleSpacing) / 5
-        let x = (layer.bounds.size.width - size.width) / 2
-        let y = (layer.bounds.size.height - circleSize) / 2
+        let xaxis = (layer.bounds.size.width - size.width) / 2
+        let yaxis = (layer.bounds.size.height - circleSize) / 2
         let deltaY = size.height / 2
         let duration: CFTimeInterval = 1
         let timingFunction = CAMediaTimingFunction(controlPoints: 0.15, 0.46, 0.9, 0.6)
@@ -42,15 +42,15 @@ class NVActivityIndicatorAnimationBallPulseRise: NVActivityIndicatorAnimationDel
         let evenAnimation = self.evenAnimation(duration: duration, deltaY: deltaY, timingFunction: timingFunction)
 
         // Draw circles
-        for i in 0 ..< 5 {
+        for index in 0 ..< 5 {
             let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
-            let frame = CGRect(x: x + circleSize * CGFloat(i) + circleSpacing * CGFloat(i),
-                               y: y,
+            let frame = CGRect(x: xaxis + circleSize * CGFloat(index) + circleSpacing * CGFloat(index),
+                               y: yaxis,
                                width: circleSize,
                                height: circleSize)
 
             circle.frame = frame
-            if i % 2 == 0 {
+            if index % 2 == 0 {
                 circle.add(evenAnimation, forKey: "animation")
             } else {
                 circle.add(oddAnimation, forKey: "animation")
@@ -114,3 +114,4 @@ class NVActivityIndicatorAnimationBallPulseRise: NVActivityIndicatorAnimationDel
     }
 }
 #endif
+// swiftlint:enable all

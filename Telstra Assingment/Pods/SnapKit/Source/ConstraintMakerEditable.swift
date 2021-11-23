@@ -20,7 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
-
+// swiftlint:disable all
 #if os(iOS) || os(tvOS)
     import UIKit
 #else
@@ -46,7 +46,6 @@ public class ConstraintMakerEditable: ConstraintMakerPriortizable {
         self.description.constant = amount.constraintOffsetTargetValue
         return self
     }
-    
     @discardableResult
     public func inset(_ amount: ConstraintInsetTarget) -> ConstraintMakerEditable {
         self.description.constant = amount.constraintInsetTargetValue
@@ -62,3 +61,4 @@ public class ConstraintMakerEditable: ConstraintMakerPriortizable {
     }
     #endif
 }
+// swiftlint:enable all

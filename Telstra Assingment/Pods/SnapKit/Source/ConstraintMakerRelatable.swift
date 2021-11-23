@@ -27,7 +27,7 @@
     import AppKit
 #endif
 
-
+// swiftlint:disable all
 public class ConstraintMakerRelatable {
     
     internal let description: ConstraintDescription
@@ -48,7 +48,7 @@ public class ConstraintMakerRelatable {
                   other.attributes == .margins && self.description.attributes == .edges ||
                   other.attributes == .directionalEdges && self.description.attributes == .directionalMargins ||
                   other.attributes == .directionalMargins && self.description.attributes == .directionalEdges else {
-                fatalError("Cannot constraint to multiple non identical attributes. (\(file), \(line))");
+                fatalError("Cannot constraint to multiple non identical attributes ")
             }
             
             related = other
@@ -91,7 +91,6 @@ public class ConstraintMakerRelatable {
     public func lessThanOrEqualTo(_ other: ConstraintRelatableTarget, _ file: String = #file, _ line: UInt = #line) -> ConstraintMakerEditable {
         return self.relatedTo(other, relation: .lessThanOrEqual, file: file, line: line)
     }
-    
     @discardableResult
     public func lessThanOrEqualToSuperview(_ file: String = #file, _ line: UInt = #line) -> ConstraintMakerEditable {
         guard let other = self.description.item.superview else {
@@ -99,17 +98,16 @@ public class ConstraintMakerRelatable {
         }
         return self.relatedTo(other, relation: .lessThanOrEqual, file: file, line: line)
     }
-    
     @discardableResult
     public func greaterThanOrEqualTo(_ other: ConstraintRelatableTarget, _ file: String = #file, line: UInt = #line) -> ConstraintMakerEditable {
         return self.relatedTo(other, relation: .greaterThanOrEqual, file: file, line: line)
     }
-    
     @discardableResult
     public func greaterThanOrEqualToSuperview(_ file: String = #file, line: UInt = #line) -> ConstraintMakerEditable {
         guard let other = self.description.item.superview else {
-            fatalError("Expected superview but found nil when attempting make constraint `greaterThanOrEqualToSuperview`.")
+            fatalError("Expected superview but found nil when attempting make constraint greaterThanOrEqualToSuperview.")
         }
         return self.relatedTo(other, relation: .greaterThanOrEqual, file: file, line: line)
     }
 }
+// swiftlint:enable all
