@@ -40,7 +40,6 @@ class PhotosViewController: UIViewController {
 // MARK: - Method for pull to refresh
     @objc private func refresh(_ sender: AnyObject) {
         isRefreshSelected = true
-       // self.photosTableData.rows?.removeAll()
         photosViewModel.getPhotosData()
     }
     
