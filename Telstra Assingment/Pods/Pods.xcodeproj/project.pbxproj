@@ -1630,6 +1630,23 @@
 			};
 			name = Debug;
 		};
+		68A5A619EDF2730D305D8C57E38E9F6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66FF900E8A316EF61D1B8B0B799E63B2 /* SwiftLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		70405BBB5F1B47D9510B8C3A566F6DF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4BBF03E64F91569232F903E99184EDCD /* Pods-Telstra Assingment.release.xcconfig */;
@@ -1831,23 +1848,6 @@
 			};
 			name = Release;
 		};
-		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66FF900E8A316EF61D1B8B0B799E63B2 /* SwiftLint.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		B0A83E2B33F87D1C7856C6DF93404465 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9F80A0B21B556FDA2ABE0261BF3D789 /* SDWebImage.debug.xcconfig */;
@@ -1879,6 +1879,22 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B3EA9E3AC20B54A6071EE93A3F6A10F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C339D37557F532E78947B9DFA9DBE6CA /* SwiftLint.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2028,22 +2044,6 @@
 			};
 			name = Debug;
 		};
-		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C339D37557F532E78947B9DFA9DBE6CA /* SwiftLint.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2077,8 +2077,8 @@
 		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */,
-				AD81E62ACCB0B7A923FC8AA288F9921E /* Release */,
+				B3EA9E3AC20B54A6071EE93A3F6A10F7 /* Debug */,
+				68A5A619EDF2730D305D8C57E38E9F6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

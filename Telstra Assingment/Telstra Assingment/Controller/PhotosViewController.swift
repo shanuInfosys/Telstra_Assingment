@@ -72,9 +72,7 @@ extension PhotosViewController: UITableViewDataSource {
     // MARK: - Table view datasource method
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        {
-            photosTableData.rows?.count ?? 0
-        }()
+        return photosTableData.rows?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
