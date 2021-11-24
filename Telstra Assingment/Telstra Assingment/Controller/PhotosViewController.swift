@@ -6,6 +6,7 @@
 //
 import SnapKit
 import UIKit
+
 class PhotosViewController: UIViewController {
     
     // MARK: - Outlet Declaration
