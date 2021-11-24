@@ -8,14 +8,15 @@
 import Foundation
 
 // MARK: - PhotoResponse
+
 struct PhotoResponse: Codable {
-     var title: String?
-     var rows: [Row]?
+    var title: String?
+    var rows: [Row]?
 }
 struct Row: Codable {
-     var title, rowDescription: String?
-     var imageHref: String?
-
+    var title, rowDescription: String?
+    var imageHref: String?
+    
     enum CodingKeys: String, CodingKey {
         case title
         case rowDescription = "description"

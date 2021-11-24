@@ -27,15 +27,15 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable type_name
-class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSize = size.width / 5
         let deltaX = size.width / 2 - circleSize / 2
         let deltaY = size.height / 2 - circleSize / 2
-        let xaxis = (layer.bounds.size.width - size.width) / 2
-        let yaxis = (layer.bounds.size.height - size.height) / 2
+        let x = (layer.bounds.size.width - size.width) / 2
+        let y = (layer.bounds.size.height - size.height) / 2
         let duration: CFTimeInterval = 2
         let timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
@@ -49,12 +49,10 @@ class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndiAniDelegate {
         animation.isRemovedOnCompletion = false
 
         // Top-center circle
-        // swiftlint:disable line_length
         let topCenterCircle = NVActivityIndicatorShape.ring.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
-        // swiftlint:disable line_length
 
         changeAnimation(animation, values: ["{0,0}", "{hx,fy}", "{-hx,fy}", "{0,0}"], deltaX: deltaX, deltaY: deltaY)
-        topCenterCircle.frame = CGRect(x: xaxis + size.width / 2 - circleSize / 2, y: yaxis, width: circleSize, height: circleSize)
+        topCenterCircle.frame = CGRect(x: x + size.width / 2 - circleSize / 2, y: y, width: circleSize, height: circleSize)
         topCenterCircle.add(animation, forKey: "animation")
         layer.addSublayer(topCenterCircle)
 
@@ -62,7 +60,7 @@ class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndiAniDelegate {
         let bottomLeftCircle = NVActivityIndicatorShape.ring.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
 
         changeAnimation(animation, values: ["{0,0}", "{hx,-fy}", "{fx,0}", "{0,0}"], deltaX: deltaX, deltaY: deltaY)
-        bottomLeftCircle.frame = CGRect(x: xaxis, y: yaxis + size.height - circleSize, width: circleSize, height: circleSize)
+        bottomLeftCircle.frame = CGRect(x: x, y: y + size.height - circleSize, width: circleSize, height: circleSize)
         bottomLeftCircle.add(animation, forKey: "animation")
         layer.addSublayer(bottomLeftCircle)
 
@@ -70,7 +68,7 @@ class NVActivityIndicatorAnimationBallTrianglePath: NVActivityIndiAniDelegate {
         let bottomRightCircle = NVActivityIndicatorShape.ring.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
 
         changeAnimation(animation, values: ["{0,0}", "{-fx,0}", "{-hx,-fy}", "{0,0}"], deltaX: deltaX, deltaY: deltaY)
-        bottomRightCircle.frame = CGRect(x: xaxis + size.width - circleSize, y: yaxis + size.height - circleSize, width: circleSize, height: circleSize)
+        bottomRightCircle.frame = CGRect(x: x + size.width - circleSize, y: y + size.height - circleSize, width: circleSize, height: circleSize)
         bottomRightCircle.add(animation, forKey: "animation")
         layer.addSublayer(bottomRightCircle)
     }

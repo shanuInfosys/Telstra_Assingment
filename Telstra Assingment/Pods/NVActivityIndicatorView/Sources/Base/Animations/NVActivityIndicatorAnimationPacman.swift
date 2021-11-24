@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationPacman: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationPacman: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         circleInLayer(layer, size: size, color: color)
@@ -120,4 +120,3 @@ class NVActivityIndicatorAnimationPacman: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

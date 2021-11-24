@@ -27,12 +27,12 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationTriangleSkewSpin: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationTriangleSkewSpin: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
-        let xaxis = (layer.bounds.size.width - size.width) / 2
-        let yaxis = (layer.bounds.size.height - size.height) / 2
+        let x = (layer.bounds.size.width - size.width) / 2
+        let y = (layer.bounds.size.height - size.height) / 2
         let duration: CFTimeInterval = 3
         let timingFunction = CAMediaTimingFunction(controlPoints: 0.09, 0.57, 0.49, 0.9)
 
@@ -55,7 +55,7 @@ class NVActivityIndicatorAnimationTriangleSkewSpin: NVActivityIndiAniDelegate {
         // Draw triangle
         let triangle = NVActivityIndicatorShape.triangle.layerWith(size: size, color: color)
 
-        triangle.frame = CGRect(x: xaxis, y: yaxis, width: size.width, height: size.height)
+        triangle.frame = CGRect(x: x, y: y, width: size.width, height: size.height)
         triangle.add(animation, forKey: "animation")
         layer.addSublayer(triangle)
     }
@@ -77,4 +77,3 @@ class NVActivityIndicatorAnimationTriangleSkewSpin: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

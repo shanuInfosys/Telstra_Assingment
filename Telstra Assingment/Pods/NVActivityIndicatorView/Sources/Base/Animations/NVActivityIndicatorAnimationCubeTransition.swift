@@ -27,13 +27,13 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationCubeTransition: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationCubeTransition: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let squareSize = size.width / 5
-        let xaxis = (layer.bounds.size.width - size.width) / 2
-        let yaxis = (layer.bounds.size.height - size.height) / 2
+        let x = (layer.bounds.size.width - size.width) / 2
+        let y = (layer.bounds.size.height - size.height) / 2
         let deltaX = size.width - squareSize
         let deltaY = size.height - squareSize
         let duration: CFTimeInterval = 1.6
@@ -80,11 +80,11 @@ class NVActivityIndicatorAnimationCubeTransition: NVActivityIndiAniDelegate {
         animation.isRemovedOnCompletion = false
 
         // Draw squares
-        for index in 0 ..< 2 {
+        for i in 0 ..< 2 {
             let square = NVActivityIndicatorShape.rectangle.layerWith(size: CGSize(width: squareSize, height: squareSize), color: color)
-            let frame = CGRect(x: xaxis, y: yaxis, width: squareSize, height: squareSize)
+            let frame = CGRect(x: x, y: y, width: squareSize, height: squareSize)
 
-            animation.beginTime = beginTime + beginTimes[index]
+            animation.beginTime = beginTime + beginTimes[i]
             square.frame = frame
             square.add(animation, forKey: "animation")
             layer.addSublayer(square)
@@ -92,4 +92,3 @@ class NVActivityIndicatorAnimationCubeTransition: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

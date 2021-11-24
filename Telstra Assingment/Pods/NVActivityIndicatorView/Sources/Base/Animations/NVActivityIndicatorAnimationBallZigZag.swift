@@ -28,8 +28,8 @@
 #if canImport(UIKit)
 import UIKit
 import QuartzCore
-// swiftlint:disable all
-class NVActivityIndicatorAnimationBallZigZag: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationBallZigZag: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSize: CGFloat = size.width / 5
@@ -77,4 +77,3 @@ class NVActivityIndicatorAnimationBallZigZag: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

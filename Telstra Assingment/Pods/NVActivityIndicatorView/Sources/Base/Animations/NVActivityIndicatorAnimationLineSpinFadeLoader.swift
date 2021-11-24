@@ -27,14 +27,14 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let lineSpacing: CGFloat = 2
         let lineSize = CGSize(width: (size.width - 4 * lineSpacing) / 5, height: (size.height - 2 * lineSpacing) / 3)
-        let xaxis = (layer.bounds.size.width - size.width) / 2
-        let yaxis = (layer.bounds.size.height - size.height) / 2
+        let x = (layer.bounds.size.width - size.width) / 2
+        let y = (layer.bounds.size.height - size.height) / 2
         let duration: CFTimeInterval = 1.2
         let beginTime = CACurrentMediaTime()
         let beginTimes: [CFTimeInterval] = [0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84, 0.96]
@@ -51,14 +51,14 @@ class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndiAniDelegate 
         animation.isRemovedOnCompletion = false
 
         // Draw lines
-        for index in 0 ..< 8 {
-            let line = lineAt(angle: CGFloat(Double.pi / 4 * Double(index)),
+        for i in 0 ..< 8 {
+            let line = lineAt(angle: CGFloat(Double.pi / 4 * Double(i)),
                               size: lineSize,
-                              origin: CGPoint(x: xaxis, y: yaxis),
+                              origin: CGPoint(x: x, y: y),
                               containerSize: size,
                               color: color)
 
-            animation.beginTime = beginTime + beginTimes[index]
+            animation.beginTime = beginTime + beginTimes[i]
             line.add(animation, forKey: "animation")
             layer.addSublayer(line)
         }
@@ -89,4 +89,3 @@ class NVActivityIndicatorAnimationLineSpinFadeLoader: NVActivityIndiAniDelegate 
     }
 }
 #endif
-// swiftlint:enable all

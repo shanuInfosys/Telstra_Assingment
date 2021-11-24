@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let duration: CFTimeInterval = 1
@@ -59,14 +59,14 @@ class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndiAniDelegate {
         animation.isRemovedOnCompletion = false
 
         // Draw balls
-        for index in 0 ..< 3 {
+        for i in 0 ..< 3 {
             let circle = NVActivityIndicatorShape.circle.layerWith(size: size, color: color)
             let frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
                                y: (layer.bounds.size.height - size.height) / 2,
                                width: size.width,
                                height: size.height)
 
-            animation.beginTime = beginTime + beginTimes[index]
+            animation.beginTime = beginTime + beginTimes[i]
             circle.frame = frame
             circle.opacity = 0
             circle.add(animation, forKey: "animation")
@@ -75,4 +75,3 @@ class NVActivityIndicatorAnimationBallScaleMultiple: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

@@ -7,14 +7,18 @@
 import SnapKit
 import UIKit
 class PhotosViewController: UIViewController {
-// MARK: - Outlet Declaration
+    
+    // MARK: - Outlet Declaration
+    
     private var photosViewModel = PhotosViewModal()
     private var photosTableData = PhotoResponse()
     private let refreshControl = UIRefreshControl()
     
-// MARK: - Variable Declaration
+    // MARK: - Variable Declaration
+    
     private var isRefreshSelected = false
     lazy var photosTableView: UITableView = {
+        
         let tempphotosTableView = UITableView()
         tempphotosTableView.estimatedRowHeight = 200
         tempphotosTableView.rowHeight = UITableView.automaticDimension
@@ -24,8 +28,9 @@ class PhotosViewController: UIViewController {
         tempphotosTableView.backgroundColor = .white
         return tempphotosTableView
     }()
-
-// MARK: - View Controller Life Cycle
+    
+    // MARK: - View Controller Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,20 +42,57 @@ class PhotosViewController: UIViewController {
         setupUI()
         LoaderClass.sharedInstance.setUpLoader(vc: self)
     }
-// MARK: - Method for pull to refresh
-    @objc private func refresh(_ sender: AnyObject) {
-        isRefreshSelected = true
-        photosViewModel.getPhotosData()
+}
+// MARK: - Class Extension
+
+extension PhotosViewController: PhotosViewModelDelegate {
+    
+    // MARK: - Delegate to pass data from viewmodal to Controller
+    
+    func didReceivePhotosResponse(photoResponse: PhotoResponse) {
+        
+        self.photosTableData.rows?.removeAll()
+        self.photosTableData = photoResponse
+        setTitleToNavBar(title: self.photosTableData.title ?? " ")
+        self.photosTableView.dataSource = self
+        self.photosTableView.reloadData()
+        LoaderClass.sharedInstance.stopLoader()
+        if isRefreshSelected == true {
+            refreshControl.endRefreshing()
+            isRefreshSelected = false
+        }
+    }
+}
+
+// MARK: - TableView Data Source
+
+extension PhotosViewController: UITableViewDataSource {
+    
+    // MARK: - Table view datasource method
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        {
+            photosTableData.rows?.count ?? 0
+        }()
     }
     
-// MARK: - Method to set title for navigation bar
-   private func setTitleToNavBar (title: String) {
-    self.navigationItem.title = title
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Common.cellId, for: indexPath) as? PhotosTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.photosCellData = photosTableData.rows?[indexPath.row]
+        return cell
     }
+}
 
 // MARK: - Method for registering UITableView Cell
-   private func setupUI() {
-    photosTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: cellId)
+
+private extension PhotosViewController {
+    
+    private func setupUI() {
+        
+        photosTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: Common.cellId)
         self.view.addSubview(photosTableView)
         photosTableView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -59,41 +101,19 @@ class PhotosViewController: UIViewController {
             make.bottom.equalToSuperview().offset(4)
         }
     }
-}
-// MARK: - Class Extension
-extension PhotosViewController: photosViewModelDelegate {
-// MARK: - Delegate to pass data from viewmodal to Controller
-    func didReceivePhotosResponse(photoResponse: PhotoResponse) {
-        self.photosTableData.rows?.removeAll()
-        self.photosTableData = photoResponse
-        setTitleToNavBar(title: self.photosTableData.title ?? " ")
-        self.photosTableView.dataSource = self
-        self.photosTableView.reloadData()
-        LoaderClass.sharedInstance.stopLoader()
+    
+    // MARK: - Method for pull to refresh
+    
+    @objc private func refresh(_ sender: AnyObject) {
         
-        if isRefreshSelected == true {
-            refreshControl.endRefreshing()
-            isRefreshSelected = false
-        }
-        else {
-        }
+        isRefreshSelected = true
+        photosViewModel.getPhotosData()
     }
-}
-// MARK: - TableView Data Source
-extension PhotosViewController: UITableViewDataSource {
-    // MARK: - Table view datasource method
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         {
-            photosTableData.rows?.count ?? 0
-        }()
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    // MARK: - Method to set title for navigation bar
+    
+    private func setTitleToNavBar (title: String) {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? PhotosTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.photosCellData = photosTableData.rows?[indexPath.row]
-        return cell
+        self.navigationItem.title = title
     }
 }

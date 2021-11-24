@@ -88,7 +88,7 @@ public enum NVActivityIndicatorType: CaseIterable {
     /**
      BallClipRotate.
 
-     - returns: Instance of NVActivityAnimationBallClipRotate.
+     - returns: Instance of NVActivityIndicatorAnimationBallClipRotate.
      */
     case ballClipRotate
     /**
@@ -273,7 +273,7 @@ public enum NVActivityIndicatorType: CaseIterable {
     case circleStrokeSpin
 
     // swiftlint:disable:next cyclomatic_complexity function_body_length
-    func animation() -> NVActivityIndiAniDelegate {
+    func animation() -> NVActivityIndicatorAnimationDelegate {
         switch self {
         case .blank:
             return NVActivityIndicatorAnimationBlank()
@@ -282,7 +282,7 @@ public enum NVActivityIndicatorType: CaseIterable {
         case .ballGridPulse:
             return NVActivityIndicatorAnimationBallGridPulse()
         case .ballClipRotate:
-            return NVActivityAnimationBallClipRotate()
+            return NVActivityIndicatorAnimationBallClipRotate()
         case .squareSpin:
             return NVActivityIndicatorAnimationSquareSpin()
         case .ballClipRotatePulse:
@@ -374,7 +374,16 @@ public final class NVActivityIndicatorView: UIView {
     /// Default size of activity indicator view in UI blocker. Default value is 60x60.
     public static var DEFAULT_BLOCKER_SIZE = CGSize(width: 60, height: 60)
 
+    /// Default display time threshold to actually display UI blocker. Default value is 0 ms.
+    ///
+    /// - note:
+    /// Default time that has to be elapsed (between calls of `startAnimating()` and `stopAnimating()`) in order to actually display UI blocker. It should be set thinking about what the minimum duration of an activity is to be worth showing it to the user. If the activity ends before this time threshold, then it will not be displayed at all.
     public static var DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD = 0
+
+    /// Default minimum display time of UI blocker. Default value is 0 ms.
+    ///
+    /// - note:
+    /// Default minimum display time of UI blocker. Its main purpose is to avoid flashes showing and hiding it so fast. For instance, setting it to 200ms will force UI blocker to be shown for at least this time (regardless of calling `stopAnimating()` ealier).
     public static var DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME = 0
 
     /// Default message displayed in UI blocker. Default value is nil.
@@ -538,7 +547,7 @@ public final class NVActivityIndicatorView: UIView {
     // MARK: Privates
 
     private final func setUpAnimation() {
-        let animation: NVActivityIndiAniDelegate = type.animation()
+        let animation: NVActivityIndicatorAnimationDelegate = type.animation()
         var animationRect = frame.inset(by: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
         let minEdge = min(animationRect.width, animationRect.height)
 

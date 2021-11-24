@@ -27,8 +27,8 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         for index in (0...1) {
@@ -61,4 +61,3 @@ class NVActivityIndicatorAnimationBallDoubleBounce: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

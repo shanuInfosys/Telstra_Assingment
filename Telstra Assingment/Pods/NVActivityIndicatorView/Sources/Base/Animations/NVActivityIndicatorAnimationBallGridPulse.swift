@@ -27,14 +27,14 @@
 
 #if canImport(UIKit)
 import UIKit
-// swiftlint:disable all
-class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndiAniDelegate {
+
+class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndicatorAnimationDelegate {
 
     func setUpAnimation(in layer: CALayer, size: CGSize, color: UIColor) {
         let circleSpacing: CGFloat = 2
         let circleSize = (size.width - circleSpacing * 2) / 3
-        let xaxis = (layer.bounds.size.width - size.width) / 2
-        let yaxis = (layer.bounds.size.height - size.height) / 2
+        let x = (layer.bounds.size.width - size.width) / 2
+        let y = (layer.bounds.size.height - size.height) / 2
         let durations: [CFTimeInterval] = [0.72, 1.02, 1.28, 1.42, 1.45, 1.18, 0.87, 1.45, 1.06]
         let beginTime = CACurrentMediaTime()
         let beginTimes: [CFTimeInterval] = [ -0.06, 0.25, -0.17, 0.48, 0.31, 0.03, 0.46, 0.78, 0.45]
@@ -62,16 +62,16 @@ class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndiAniDelegate {
         animation.isRemovedOnCompletion = false
 
         // Draw circles
-        for iindex in 0 ..< 3 {
-            for jindex in 0 ..< 3 {
+        for i in 0 ..< 3 {
+            for j in 0 ..< 3 {
                 let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
-                let frame = CGRect(x: xaxis + circleSize * CGFloat(jindex) + circleSpacing * CGFloat(jindex),
-                                   y: yaxis + circleSize * CGFloat(iindex) + circleSpacing * CGFloat(iindex),
+                let frame = CGRect(x: x + circleSize * CGFloat(j) + circleSpacing * CGFloat(j),
+                                   y: y + circleSize * CGFloat(i) + circleSpacing * CGFloat(i),
                                    width: circleSize,
                                    height: circleSize)
 
-                animation.duration = durations[3 * iindex + jindex]
-                animation.beginTime = beginTime + beginTimes[3 * iindex + jindex]
+                animation.duration = durations[3 * i + j]
+                animation.beginTime = beginTime + beginTimes[3 * i + j]
                 circle.frame = frame
                 circle.add(animation, forKey: "animation")
                 layer.addSublayer(circle)
@@ -80,4 +80,3 @@ class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndiAniDelegate {
     }
 }
 #endif
-// swiftlint:enable all

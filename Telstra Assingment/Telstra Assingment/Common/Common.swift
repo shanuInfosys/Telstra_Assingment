@@ -6,13 +6,17 @@
 
 import Foundation
 // MARK: - Constants Declaration
-let photodata = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-let title = "Internet Issue"
-let titledescription = "Internet Unvailable"
-let okTitle = "OK"
-let cancelTitle = "Cancel"
-let cellId = "cell"
-let errorAlertTitle = "Error"
-let okAlertTitle = "Ok"
-let cancelAlertTitle = "Cancel"
-let tempImage = "temp"
+
+enum Common {
+    
+    static let photodata = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+    static let title = "Internet Issue"
+    static let titledescription = "Internet Unvailable"
+    static let okTitle = "OK"
+    static let cancelTitle = "Cancel"
+    static let cellId = "cell"
+    static let errorAlertTitle = "Error"
+    static let okAlertTitle = "Ok"
+    static let cancelAlertTitle = "Cancel"
+    static let tempImage = "temp"
+}

@@ -4,9 +4,9 @@
 //
 //  Created by SHANU on 20/11/21.
 //
-
-import XCTest
 @testable import Telstra_Assingment
+import XCTest
+
 class PhotoDataTests: XCTestCase {
     func test_list_of_photos_returns_valid_response() {
         // Arrange
@@ -30,5 +30,4 @@ class PhotoDataTests: XCTestCase {
         let networkStatus = Reachability.isConnectedToNetwork()
         XCTAssertFalse(networkStatus)
     }
-
 }
